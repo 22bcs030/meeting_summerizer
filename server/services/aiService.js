@@ -262,10 +262,42 @@ function generateMockSummary(text, prompt) {
   } else if (prompt.toLowerCase().includes('action')) {
     // Action items focused summary
     summary = "# Action Items\n\n";
-    summary += "1. Review the proposed changes\n";
-    summary += "2. Follow up with team members about timeline\n";
-    summary += "3. Prepare documentation for next phase\n";
-    summary += "4. Schedule follow-up meeting\n";
+    
+    // Look for action items in the text or JSON
+    let actionsFound = false;
+    if (isJsonFormat && jsonData) {
+      // Look for action keywords in discussion
+      if (jsonData.discussion && Array.isArray(jsonData.discussion)) {
+        jsonData.discussion.forEach(item => {
+          if (item.message && (
+              item.message.toLowerCase().includes('action') || 
+              item.message.toLowerCase().includes('task') || 
+              item.message.toLowerCase().includes('todo') ||
+              item.message.toLowerCase().includes('to-do') ||
+              item.message.toLowerCase().includes('need to') ||
+              item.message.toLowerCase().includes('should') ||
+              item.message.toLowerCase().match(/will.*do/)
+              )) {
+            summary += `* ${item.message.trim()}\n`;
+            actionsFound = true;
+          }
+        });
+      }
+    } else {
+      // Try to extract actions from regular text
+      const actionSentences = processedText.match(/[^.!?]*?(action item|task|todo|to-do|need to|should|will.*do)[^.!?]*[.!?]/gi) || [];
+      if (actionSentences.length > 0) {
+        actionSentences.forEach(sentence => {
+          summary += `* ${sentence.trim()}\n`;
+        });
+        actionsFound = true;
+      }
+    }
+    
+    // If no specific actions found, inform the user
+    if (!actionsFound) {
+      summary += "* No specific action items identified in the transcript\n";
+    }
     
   } else {
     // Default summary
