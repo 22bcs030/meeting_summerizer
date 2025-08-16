@@ -15,10 +15,24 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 
+// CORS configuration
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? [
+        process.env.FRONTEND_URL || 'https://meeting-notes-summarizer-vercel.app',
+        'https://meeting-notes-summarizer.vercel.app',
+        'https://meeting-summerizer-client.vercel.app',
+        // Include multiple possible frontend URLs
+      ]
+    : 'http://localhost:3000', // Development URL
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
 // Middleware
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 // Connect to MongoDB with fallback to local database if connection fails
 const connectToMongoDB = async () => {
