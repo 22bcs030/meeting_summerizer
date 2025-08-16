@@ -1,7 +1,7 @@
 {
   "build": {
     "env": {
-      "REACT_APP_API_URL": "https://meeting-notes-summarizer-api.onrender.com/api"
+      "REACT_APP_API_URL": "https://meeting-summerizer.onrender.com/api"
     }
   }
 }
