@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = '/api';
+// Use the correct API URL based on environment
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 // Summary service
 export const generateSummary = async (text, prompt) => {
