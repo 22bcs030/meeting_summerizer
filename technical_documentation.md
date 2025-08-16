@@ -97,14 +97,14 @@ Chose the MERN (MongoDB, Express, React, Node.js) stack for the following reason
 ## Deployment Strategy
 
 1. **Backend Deployment**:
-   - Hosted on a cloud platform (e.g., Heroku, Render, or AWS)
-   - Environment variables set for database connection, API keys, etc.
+   - Hosted on Render.com at [https://meeting-summerizer.onrender.com](https://meeting-summerizer.onrender.com)
+   - Environment variables set for database connection, API keys, email service, etc.
    - MongoDB hosted on MongoDB Atlas
 
 2. **Frontend Deployment**:
    - Built static assets using `npm run build`
-   - Hosted on a static site hosting service (e.g., Netlify, Vercel)
-   - Configured to point to the deployed backend API
+   - Hosted on Vercel at [https://meeting-summerizer-blond.vercel.app](https://meeting-summerizer-blond.vercel.app)
+   - Configured to point to the deployed backend API through environment variables
 
 ## Future Enhancements
 

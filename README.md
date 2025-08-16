@@ -66,7 +66,13 @@ An AI-powered application that allows you to upload meeting transcripts, generat
 
 ## Deployment
 
-For deployment, you can follow these steps:
+The application is deployed and accessible at:
+- **Live Demo:** [https://meeting-summerizer-blond.vercel.app](https://meeting-summerizer-blond.vercel.app)
+- **Backend API:** [https://meeting-summerizer.onrender.com](https://meeting-summerizer.onrender.com)
+
+For deployment instructions, see the [deployment guide](./deployment-guide.md).
+
+If you want to deploy your own instance, follow these steps:
 
 1. Build the React frontend:
    ```
@@ -74,7 +80,7 @@ For deployment, you can follow these steps:
    npm run build
    ```
 2. Configure the server to serve the static files from the build directory
-3. Deploy to your preferred hosting provider (e.g., Heroku, Vercel, Netlify, etc.)
+3. Deploy to your preferred hosting provider (e.g., Render, Vercel, etc.)
 
 ## License
 
