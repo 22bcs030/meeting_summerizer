@@ -19,10 +19,11 @@ const app = express();
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
     ? [
-        process.env.FRONTEND_URL || 'https://meeting-notes-summarizer-vercel.app',
+        process.env.FRONTEND_URL || 'https://meeting-summerizer-blond.vercel.app',
+        'https://meeting-summerizer-blond.vercel.app',
         'https://meeting-notes-summarizer.vercel.app',
         'https://meeting-summerizer-client.vercel.app',
-        // Include multiple possible frontend URLs
+        // Include your specific frontend URL
       ]
     : 'http://localhost:3000', // Development URL
   credentials: true,
