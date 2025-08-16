@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Backend Server",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/server && npm run dev",
+      "problemMatcher": [],
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start Frontend Dev Server",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/client && npm start",
+      "problemMatcher": [],
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start Full Stack Application",
+      "dependsOn": ["Start Backend Server", "Start Frontend Dev Server"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Install All Dependencies",
+      "type": "shell",
+      "command": "cd ${workspaceFolder}/server && npm install && cd ../client && npm install",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
